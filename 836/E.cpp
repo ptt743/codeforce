@@ -8,7 +8,9 @@ using namespace std;
 //*****taipt*****//
 
 void solve(){
-	
+	int n,m,h;
+	cin>>n>>m>>h;
+	//phai giai tiep nha 
 }
  
 int main() {

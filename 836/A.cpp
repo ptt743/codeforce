@@ -8,11 +8,17 @@ using namespace std;
 //*****taipt*****//
 
 void solve(){
-	
+	string s;
+	cin>> s;
+	string result="";
+	sort(s.begin(), s.end());
+	result+= s;
+	sort(s.begin(), s.end(), greater<char>());
+	result+= s;
+	cout<<result<<endl;
 }
  
 int main() {
-    ios_base::sync_with_stdio(0); cin.tie(0);
     int t;
     cin >> t;
     while(t--){
