@@ -4,9 +4,12 @@
 #include<string>
 #include<queue>
 #include<stack>
+
+#define ll long long
 using namespace std;
 //*****taipt*****//
-
+/*
+*/
 void solve(){
 	
 }
