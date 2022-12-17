@@ -10,12 +10,12 @@ using namespace std;
 
 void solve(){
 	int n;
-	char c;
+  char c;
 	cin>> n>> c;
 	string s;
 	cin>>s;
 	vector<int> green_index;
-	int result = 0;
+  int result = 0;
 	for( int i=0;i<n;i++)if(s[i]=='g')green_index.push_back(i);
 	for(int i =0;i< n;i++){
 		if(s[i]==c){
