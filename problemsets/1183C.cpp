@@ -15,7 +15,16 @@ using namespace std;
 /*
 */
 void solve(){
-	
+	long long k,n,a,b;
+  cin>> k>>n>>a>>b;
+  int left = 0, right = n;
+  while(left<=right){
+    long long mid = (left+ right)/2;
+    if(a*(mid) + b*(n-mid)<k) left = mid+1;
+    else right = mid-1;
+  }
+  cout<<right<<endl;
+  
 }
  
 int main() {

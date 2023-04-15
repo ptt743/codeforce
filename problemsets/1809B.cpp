@@ -15,7 +15,16 @@ using namespace std;
 /*
 */
 void solve(){
-	
+	long long n;
+  cin>> n;
+  long long l =-1;
+  long long r = 1e9;
+  while(l<=r){
+    long long mid = (r+l)/2;
+    if(mid*mid>=n) r = mid-1;
+    else l = mid+1;
+  }
+  cout<< r<<endl;
 }
  
 int main() {

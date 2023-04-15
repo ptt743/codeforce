@@ -10,22 +10,22 @@ using namespace std;
 //*****taipt*****//
 /*
 */
-struct edge{
-  int u;
-  int v;
-}
 class Graph{
   public:
     int n;
+    int timer;
     vector<vector<int>> adj;
-    Graph(int l, vector<edge> edges){
+    vector<bool> visited;
+    Graph(int l){
       n=l;
       adj = vector<vector<int>>(n+1, vector<int>());
-      for( int i =0;i< edges.size();i++){
-        adj[edges[i].u].push_back(edges[i].v);
-        adj[edges[i].v].push_back(edges[i].u);
-      }
+      visited = vectot<bool>(n+1); 
     }
+
+    void add(int u, int v){
+      adj[u].push_back(v);
+    }
+
 }
 void solve(){
 	

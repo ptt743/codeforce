@@ -15,7 +15,20 @@ using namespace std;
 /*
 */
 void solve(){
-	
+	int n;
+  long long l,r;
+  cin>>n>>l>>r;
+  vector<long long> a(n);
+  for(int i =0;i< n;i++) cin>>a[i];
+  sort(a.begin(), a.end());
+  ll result = 0;
+  for(int i=0;i< n;i++){
+    ll bottom = lower_bound(a.begin(), a.end(), l-a[i])- a.begin();
+    ll top = upper_bound(a.begin(), a.end(), r - a[i])- a.begin();
+    result += top - bottom;
+    if(i>=bottom && i< top) result--;
+  }
+  cout<< result/2<<endl;
 }
  
 int main() {
