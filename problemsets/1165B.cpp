@@ -8,6 +8,7 @@
 #include<unordered_map>
 #include<cmath>
 #include<functional>
+
 #define ll long long
 
 using namespace std;
@@ -15,26 +16,27 @@ using namespace std;
 /*
 */
 void solve(){
-	long long n;
-  cin>> n;
-  long long target = n;
-  long long left = 0, right = 31623;
-  while(left<= right){
-    long long mid= (left+ right)/2;
-    if(mid*(mid+1)>=target) right = mid-1;
-    else left = mid+1;
+	int n;
+  cin>>n;
+  vector<int> a(n);
+  for(int i =0;i< n;i++) cin>> a[i];
+  multiset<int> st;
+  for(int item: a) st.insert(item);
+  int ans = 0;
+  for(int i=1;i<=n;i++){
+    auto it = st.lower_bound(i);
+    if(it==st.end()){
+      break;
+    }
+    ans++;
+    st.erase(it);
   }
-  int bonus = 0;
-  if(left*(left+1)- left +1> target ) bonus=-1;
-  cout<<1 + 2*left + bonus<<endl;
+  cout<<ans<<endl;
 }
  
 int main() {
     ios_base::sync_with_stdio(0); cin.tie(0);
     int t;
-    cin >> t;
-    while(t--){
         solve();
-    }
     return 0;
 }

@@ -15,24 +15,25 @@ using namespace std;
 /*
 */
 void solve(){
- int n ;
- cin>> n;
- vector<int> a(n+1);
- for(int i=1;i<= n;i++) cin>> a[i];
- for(int i =2;i<= n;i++) a[i] +=a[i-1];
- int left = 1, right = n;
- while(left<=right){
-   int mid = (left+right)/2;
-   cout<<"? "<<mid<<" ";
-  long long t;
-  for(int i =1;i<=mid;i++) cout<<i<<" ";
-  cout<<endl;
-  cout.flush();
-  cin>>t;
-  if(t> a[mid]) right = mid-1;
-  else left = mid+1;
- }
- cout<<"! "<<left<<endl;
+	int n, k;
+  cin>>n>>k;
+  vector<long long> a(n);
+  long long sum_t=0;
+  for(int i =0;i< n;i++){
+    cin>> a[i];
+    sum_t+=a[i]*k;
+  }
+  
+  long long sum  = a[0]*k;
+  
+  for(int i =1;i< n;i++){
+    if(a[i]*100> sum){
+      sum += a[i]*100 - sum;
+
+    }
+    sum+= a[i]*k;
+  }
+  cout<<(sum- sum_t)/k + ((sum-sum_t)%k==0?0:1)<<endl;
 }
  
 int main() {

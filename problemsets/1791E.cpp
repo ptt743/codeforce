@@ -15,24 +15,21 @@ using namespace std;
 /*
 */
 void solve(){
- int n ;
- cin>> n;
- vector<int> a(n+1);
- for(int i=1;i<= n;i++) cin>> a[i];
- for(int i =2;i<= n;i++) a[i] +=a[i-1];
- int left = 1, right = n;
- while(left<=right){
-   int mid = (left+right)/2;
-   cout<<"? "<<mid<<" ";
-  long long t;
-  for(int i =1;i<=mid;i++) cout<<i<<" ";
-  cout<<endl;
-  cout.flush();
-  cin>>t;
-  if(t> a[mid]) right = mid-1;
-  else left = mid+1;
- }
- cout<<"! "<<left<<endl;
+	int n;
+  cin>> n;
+  vector<long long> a(n);
+  int count = 0;
+  long long min_val= 1e9;
+  long long sum=0;
+  for(int i =0;i< n;i++){
+    cin>> a[i];
+    if(a[i]<0) count++;
+    if(abs(a[i])< min_val) min_val = abs(a[i]);
+    sum+= abs(a[i]);
+  }
+  if(count%2!=0) sum-= min_val*2;
+  cout<<sum<<endl;
+  
 }
  
 int main() {

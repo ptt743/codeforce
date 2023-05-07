@@ -8,31 +8,36 @@
 #include<unordered_map>
 #include<cmath>
 #include<functional>
+#include<bitset>
 #define ll long long
 
 using namespace std;
 //*****taipt*****//
 /*
 */
+const int MAXN = 1000005;
+
+
+
 void solve(){
- int n ;
- cin>> n;
- vector<int> a(n+1);
- for(int i=1;i<= n;i++) cin>> a[i];
- for(int i =2;i<= n;i++) a[i] +=a[i-1];
- int left = 1, right = n;
- while(left<=right){
-   int mid = (left+right)/2;
-   cout<<"? "<<mid<<" ";
-  long long t;
-  for(int i =1;i<=mid;i++) cout<<i<<" ";
-  cout<<endl;
-  cout.flush();
-  cin>>t;
-  if(t> a[mid]) right = mid-1;
-  else left = mid+1;
- }
- cout<<"! "<<left<<endl;
+	int n;
+  cin>> n;
+  vector<long long> a(n);
+  for(int i =0;i< n;i++) cin>>a[i];
+  sort(a.begin(), a.end());
+  if(a[0]!=1){
+    cout<<"No"<<endl;
+    return;
+  }
+  long long sum =a[0];
+  for(int i =1;i< n;i++){
+    if(sum < a[i]){
+      cout<<"No"<<endl;
+      return;
+    }
+    sum += a[i];
+  }
+  cout<<"Yes"<<endl;
 }
  
 int main() {

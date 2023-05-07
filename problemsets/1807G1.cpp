@@ -8,32 +8,37 @@
 #include<unordered_map>
 #include<cmath>
 #include<functional>
+#include<bitset>
 #define ll long long
 
 using namespace std;
 //*****taipt*****//
 /*
 */
+const int MAXN = 1000005;
+
+
+
 void solve(){
 	int n;
   cin>> n;
-  vector<int> a(n);
-  for( int i=0;i<n;i++) cin>> a[i];
+  vector<long long> a(n);
+  for(int i =0;i< n;i++) cin>>a[i];
+  if(n==1 && a[0]==1) {cout<<"YES"<<endl; return;}
+  else if (n==1) { cout<<"NO"<<endl; return;}
   sort(a.begin(), a.end());
-  if(a[0]!=1){
-    cout<<"NO"<<endl;
-    return;
+  int count = n-1;
+  bitset<MAXN> dp;
+  dp[1] = true;
+  for (int i = 1; i < n; i++) {
+    dp |= (dp << a[i]);
   }
-  bool flag = true;
-  for(int i=1;i<n;i++){
-    int tmp=a[i];
-    for(int j =i-1; j>=0;j--){
-      if(a[j]<=tmp) tmp-=a[j];
-    }
-    if(tmp!=0){flag = false; break;}
+  for(int i =n-1;i>=1;i--){
+    if(!dp[a[i]]) break;
+    count--;
   }
-  if(!flag) cout<<"NO"<<endl;
-  else cout<<"YES"<<endl;
+  if(count==0 && a[0]==1) cout<<"YES"<<endl;
+  else cout<<"NO"<<endl;
 }
  
 int main() {
