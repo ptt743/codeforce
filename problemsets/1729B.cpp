@@ -15,32 +15,23 @@ using namespace std;
 /*
 */
 void solve(){
-	int n,k;
-  cin>> n>>k;
-  vector<long long> a(n);
-  for(int i =0;i< n;i++) cin>>a[i];
+	int n ;
+  cin>> n;
   string s;
   cin>> s;
-  int l =0;
-  long long result = 0;
-  priority_queue<long long> qq;
-  for(int r =0;r<=n;r++){
-    if(r==n || s[r]!=s[l]){
-      int temp = min(k, r-l);
-      for(int i =0;i< temp;i++){
-      result+=qq.top();
-      qq.pop();
-      }
-      while(!qq.empty())qq.pop();
-      l = r;
-      if(r==n) break;
-      qq.push(a[r]);
-    } else {
-      qq.push(a[r]);
+  string result = "";
+  for(int i =n-1;i>=0;){
+    if(s[i]=='0'){
+      string temp = s.substr(i-2,2);
+      result=(char)((stoi(temp)-1) + 'a') + result;
+      i-=3;
+      
+    }else{
+      result = (char)(((s[i]-'0')-1) + 'a') + result;
+      i--;
     }
   }
   cout<<result<<endl;
-
 }
  
 int main() {
