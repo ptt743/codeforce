@@ -15,25 +15,23 @@ using namespace std;
 /*
 */
 void solve(){
-  int n , k;
-  cin>> n>>k;
-  string s;
-  cin>> s;
-  int num = n/k;
-  vector<int> count(26,0);
-  for(char item:s) count[item-'a']++;
-  string ans = "";
-  for(int i =0;i<=min(25,n/k);i++){
-     while(k - ans.size() > count[i]){
-       ans+=(i + 'a');
-     }
+	int n, m;
+  cin>> n>>m;
+  vector<int> a(n+1);
+  
+  for(int i=1;i<=n;i++){
+    cin>> a[i];
   }
-  char c = 'a'+ min(n/k,25);
-  while(k>ans.size()){
-    ans+= c;
+  string s(m+1,'B');
+  for( int i =1;i<=n;i++){
+    int index = min(a[i], m+1 -a[i]);
+    if(s[index]=='B'){
+      s[index] = 'A';
+    } else {
+      s[m+1- index] = 'A';
+    }
   }
-  reverse(ans.begin(), ans.end());
-  cout<<ans<<endl;
+  cout<<s.substr(1)<<endl;
 }
  
 int main() {
