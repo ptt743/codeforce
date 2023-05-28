@@ -14,53 +14,24 @@ using namespace std;
 //*****taipt*****//
 /*
 */
-const string subseqs[] = { "00", "25", "50", "75" };
-
-const int INF = 100;
-
-int solve(string& s, string& t)
-{
-	int sptr = s.length() - 1;
-
-	int ans = 0;
-	while (sptr >= 0 && s[sptr] != t[1])
-	{
-		sptr--;
-		ans++;
-	}
-
-	if (sptr < 0) return INF;
-
-	sptr--;
-
-	while (sptr >= 0 && s[sptr] != t[0])
-	{
-		sptr--;
-		ans++;
-	}
-
-	return sptr < 0 ? INF : ans;
-}
-void RC(string s,int index, long long temp, long long &max, unordered_map<long long, bool> &mp){
-  if(mp[temp]) return;
-  else mp[temp] = true;
-  if(temp%25==0&& temp> max) max= temp;
-  for(int i = index; i<s.size();i++){
-    if(temp==0 && s[i]=='0') continue;
-    RC(s,i+1,temp*10+ (s[i]-'0'), max, mp);
-    RC(s,i+1, temp, max, mp);
-  }
-}
-
+const string substring[] = {"25","50","75","00"};
+const int inf = 100;
 void solve(){
-    string n;
-		cin >> n;
-		
-		int ans = INF;
-		for (auto e : subseqs)
-			ans = min(ans, solve(n, e));
-
-		cout << ans << '\n';
+	string s;
+  cin>> s;
+  int result = 100;
+  for(auto t: substring){
+      int size = s.size()-1;
+      int ans = 0;
+      while(size>=0 && s[size]!=t[1]){size--; ans++;}      
+      if(size<0) ans = 100;
+      size--;
+      while(size>=0 && s[size]!=t[0]){ size--; ans++;}
+      if(size<0) ans = 100;
+      result = min(result, ans);
+  } 
+  cout<<result<<endl;
+  
 }
  
 int main() {

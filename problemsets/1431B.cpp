@@ -15,7 +15,20 @@ using namespace std;
 /*
 */
 void solve(){
-	
+	string s;
+  cin>> s;
+  int n  = s.size();
+  int ans = 0;
+  for(int i =0;i< n;i++){
+    if(s[i]=='w') ans++;
+    if(s[i]=='v'){
+      int right = i;
+      while(right<n && s[right]=='v')right++;
+      ans +=(right-i)/2;
+      i=right-1;
+    }
+  }
+  cout<<ans<<endl;
 }
  
 int main() {

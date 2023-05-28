@@ -15,7 +15,15 @@ using namespace std;
 /*
 */
 void solve(){
-	
+	string s;
+  cin>> s;
+  vector<vector<int>> lst(2, vector<int>(2,-1));
+  long long ans = 0;
+  for(int i =0;i< s.size();i++){
+    int j  = i-1;
+    int p = i&1;
+    if(s[i]!='1') j = min(j,)
+  }
 }
  
 int main() {
