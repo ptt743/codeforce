@@ -15,19 +15,27 @@ using namespace std;
 /*
 */
 void solve(){
-	string s;
-  cin>> s;
-  vector<vector<int>> dp(2, vector<int>(2,-1));
-  long long ans = 0;
-  for(int i =0;i< s.size();i++){
-    int j  = i-1;
-    int p = i&1;
-    if(s[i]!='1') j = min(j,max(dp[0][p^1], dp[1][p]));
-    if(s[i]!='0') j = min(j,max(dp[1][p^1], dp[0][p]));
-    ans += i - j;
-    if(s[i]!='?') dp[s[i]-'0'][p] = i;
+	int n,k;
+  cin>> n>>k;
+  vector<int> a(n);
+  set<int>s;
+  for(int i =0;i< n;i++){
+    int temp;
+    cin>> temp;
+    s.insert(temp);
   }
-  cout<<ans<<endl;
+  if (s.size()>k){
+    cout<<-1<<endl;
+    return;
+  }
+  cout<<n*k<<endl;
+  for (int i=0;i<n;i++){
+    for (int b:s)
+      cout<<b<<' ';
+    for (int j=0;j<k-(int)s.size();j++)
+      cout<<1<<' ';
+  }
+  cout<<endl;
 }
  
 int main() {
