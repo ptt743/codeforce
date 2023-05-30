@@ -5,21 +5,29 @@
 #include<queue>
 #include<stack>
 
- 
 #define ll long long
 using namespace std;
 //*****taipt*****//
 /*
 */
 void solve(){
-	long long n;
-	 cin>> n;
-	 long long result =0;
-	 long long ans = 1e9;
-	 for(long long i = 1;i*i <= n;i++){
-	 	ans = min(ans, i-1 + (n-i)/i + ((n-i)%i?1:0));
-	 }
-	 cout<< ans<<endl;
+	int n ;
+	cin>>n;
+	vector<int> a(n+1);
+	for( int i =1;i<=n;i++) cin>> a[i];
+	vector<int> res;
+	for(int i=1;i<= n;i++){
+		int l =1, r = i;
+		while(l<=r){
+			int mid = (l+r)/2;
+			if(a[i - mid+1] >= mid) l= mid+1;
+			else r = mid-1;
+		}
+		res.push_back(r);
+	}
+	for(auto i : res) cout<< i<<" ";
+	cout<<endl;
+
 }
  
 int main() {

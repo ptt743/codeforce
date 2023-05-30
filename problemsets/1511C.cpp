@@ -14,14 +14,43 @@ using namespace std;
 //*****taipt*****//
 /*
 */
+int distance(int value, set<int> &st){
+	int index=0;
+	for(auto it: st){
+		if(it== value) break;
+		index++;
+	}
+	return index;
+}
 void solve(){
 	int n, q;
-  cin>> n>> q;
-  vector<int> a(n);
-  for( int i =0;i< n;i++) cin>> a[i];
-  while(q--){
+	cin>> n>>q;
+	set<int> st;
+	unordered_map<int, int> mp;
+	int step = 0;
+	for(int i =0;i<n;i++){
+		int t;
+		cin>>t;
+		++step;
+		if(mp[t]==0) mp[t]= step;
+		st.insert( step);
+	}
+	step =0;
+	while(q--){
+		int t;
+		cin>> t;
+		int temp = mp[t];
+		int index =distance(temp,st) ;
+		st.insert(step);
+		mp[t]= step;
+		auto it  = st.find(temp);
+		st.erase(it);
+		step-=1;
+		cout<< index+1<<" ";
+	}
+	cout<<endl;
 
-  }
+
 }
  
 int main() {

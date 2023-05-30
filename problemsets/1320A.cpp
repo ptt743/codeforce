@@ -9,41 +9,34 @@
 #include<cmath>
 #include<functional>
 #define ll long long
-
+#include<map>
+#define ll long long
 using namespace std;
 //*****taipt*****//
 /*
 */
 void solve(){
-	int n,k;
-  cin>> n>>k;
-  vector<int> a(n);
-  set<int>s;
-  for(int i =0;i< n;i++){
-    int temp;
-    cin>> temp;
-    s.insert(temp);
-  }
-  if (s.size()>k){
-    cout<<-1<<endl;
-    return;
-  }
-  cout<<n*k<<endl;
-  for (int i=0;i<n;i++){
-    for (int b:s)
-      cout<<b<<' ';
-    for (int j=0;j<k-(int)s.size();j++)
-      cout<<1<<' ';
-  }
-  cout<<endl;
+	int n ;
+	cin>> n;
+	vector<int> b(n+1);
+	for(int i =1;i<=n;i++) cin>> b[i];
+	map<int, long long> mp;
+	for(int i =1;i<=n;i++){
+		if(mp.find(i-b[i])!=mp.end()){
+			mp[i-b[i]] +=b[i];
+		} else {
+			mp[i-b[i]] = b[i];
+		}
+	}
+	long long ans = 0;
+	for(auto item: mp){
+		ans = max(ans, item.second);
+	}
+	cout<<ans<<endl;
 }
  
 int main() {
     ios_base::sync_with_stdio(0); cin.tie(0);
-    int t;
-    cin >> t;
-    while(t--){
-        solve();
-    }
+    solve();
     return 0;
 }
