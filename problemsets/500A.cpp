@@ -15,27 +15,27 @@ using namespace std;
 /*
 */
 void solve(){
- int n ;
- cin>> n;
- vector<vector<int>> dp(2, vector<int>(n+1,0));
- for(int i=0;i< n;i++){
-   int c;
-   cin>> c;
-   int t  = i&1;
-   dp[t][c] = max(dp[t][c], dp[1-t][c]+1);
- }
- for(int i =1;i<=n;i++){
-   cout<<max(dp[1][i], dp[0][i])<<" ";
- }
- cout<<endl;
+	int n, t;
+  cin>> n >> t;
+  vector<int> a(n+1);
+  for(int i =1;i< n;i++) cin>> a[i];
+  queue<int> qq;
+  qq.push(1);
+  while(!qq.empty()){
+    int ind = qq.front();
+    qq.pop();
+    if(ind >=n) break;
+    if(ind + a[ind] == t) {
+      cout<<"YES"<<endl;
+      return;
+    }
+    qq.push(ind + a[ind]);
+  }
+  cout<<"NO"<<endl;
 }
  
 int main() {
     ios_base::sync_with_stdio(0); cin.tie(0);
-    int t;
-    cin >> t;
-    while(t--){
-        solve();
-    }
+      solve();
     return 0;
 }

@@ -15,19 +15,17 @@ using namespace std;
 /*
 */
 void solve(){
- int n ;
- cin>> n;
- vector<vector<int>> dp(2, vector<int>(n+1,0));
- for(int i=0;i< n;i++){
-   int c;
-   cin>> c;
-   int t  = i&1;
-   dp[t][c] = max(dp[t][c], dp[1-t][c]+1);
- }
- for(int i =1;i<=n;i++){
-   cout<<max(dp[1][i], dp[0][i])<<" ";
- }
- cout<<endl;
+	int n ;
+  cin>> n;
+  vector<long long> a(n);
+  for(int i =0;i< n;i++) cin>> a[i];
+  int ans = 0;
+  for (int i = 0; i < n; i++) {
+      ans += (i + 1) * (n - i);
+      if (a[i] == 0)
+      ans += (i + 1) * (n - i);
+  }
+  cout << ans << '\n'; 
 }
  
 int main() {
