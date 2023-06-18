@@ -8,34 +8,25 @@
 #include<unordered_map>
 #include<cmath>
 #include<functional>
-#include<map>
 #define ll long long
 
 using namespace std;
 //*****taipt*****//
-/*
-*/
+const int MOD = 1e9 + 7;
 void solve(){
-	int n;
-  long long k;
-  cin>> n>>k;
-  vector<long long> a(n);
-  map<long long,int> mp;
-  int mx = 0;
+	int n ;
+  cin>> n;
+  vector<long long> a(n), b(n);
+  for(int i =0;i< n;i++) cin>> a[i];
+  for(int i=0;i< n;i++) cin>> b[i];
+  sort(a.begin(), a.end());
+  sort(b.begin(), b.end(), greater<long long>());
+  ll result = 1;
   for(int i =0;i< n;i++){
-    cin>> a[i];
-    if(a[i]%k!=0){
-      mp[k- a[i]%k]++;
-      mx = max(mp[k-a[i]%k],mx);
-    }
-   
+    int count =(int)a.size()- (upper_bound(a.begin(), a.end(), b[i]) - a.begin());
+    result=  result*max(count- i, 0)%MOD;    
   }
-  long long ans = 0;  
-  for(auto[a,b]: mp){
-    if(b==mx)
-   ans= a + (b-1)*k*1ll+1;
-  }
-  cout<<ans<<endl;
+  cout<< result<<endl;
 }
  
 int main() {

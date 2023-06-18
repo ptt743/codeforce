@@ -8,7 +8,6 @@
 #include<unordered_map>
 #include<cmath>
 #include<functional>
-#include<map>
 #define ll long long
 
 using namespace std;
@@ -16,26 +15,20 @@ using namespace std;
 /*
 */
 void solve(){
-	int n;
-  long long k;
-  cin>> n>>k;
-  vector<long long> a(n);
-  map<long long,int> mp;
-  int mx = 0;
+	int n ;
+  cin>> n;
+  vector<int> pos(n+1);
   for(int i =0;i< n;i++){
-    cin>> a[i];
-    if(a[i]%k!=0){
-      mp[k- a[i]%k]++;
-      mx = max(mp[k-a[i]%k],mx);
+    int t;
+    cin>> t;
+    pos[t] = i;
+  }
+  int l = (n+1)/2, r = (n+2)/2;
+  while (l > 0 && (l == r || (pos[l] < pos[l + 1] && pos[r - 1] < pos[r]))) {
+      --l;
+      ++r;
     }
-   
-  }
-  long long ans = 0;  
-  for(auto[a,b]: mp){
-    if(b==mx)
-   ans= a + (b-1)*k*1ll+1;
-  }
-  cout<<ans<<endl;
+    cout << (n - r + l + 1) / 2 << '\n';
 }
  
 int main() {
