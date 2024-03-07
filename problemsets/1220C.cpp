@@ -15,25 +15,19 @@ using namespace std;
 /*
 */
 void solve(){
-	int n; cin>> n;
-	string s; cin >> s;
-	n<<=1;
-	int ans = 1;
-	for(int i =1;i< n;i++){
-		if(s[i]=='(' && s[i-1] =='('){
-			ans+=1;
-		}
+	string s;
+	cin>> s;
+	int n = s.size();
+	char y = 'z';
+	for(int i =0;i< n;i++){
+		if(s[i]> y ) cout << "Ann"<<endl;
+		else cout<< "Mike"<<endl;
+		y = (y<s[i])?y:s[i];
 	}
-	cout<< ans << endl;
-		
 }
  
 int main() {
     ios_base::sync_with_stdio(0); cin.tie(0);
-    int t;
-    cin >> t;
-    while(t--){
-        solve();
-    }
+    solve();
     return 0;
 }

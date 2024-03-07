@@ -15,17 +15,21 @@ using namespace std;
 /*
 */
 void solve(){
-	int n; cin>> n;
-	string s; cin >> s;
-	n<<=1;
-	int ans = 1;
-	for(int i =1;i< n;i++){
-		if(s[i]=='(' && s[i-1] =='('){
-			ans+=1;
+	int n;
+	cin>> n;
+	vector<int> a(n);
+	for(int i =0;i< n;i++) cin>> a[i];
+	stack<pair<int,int>> st;
+	for(int i = 0 ;i< n;i++){
+		pair<int,int> temp = make_pair(a[i], a[i]);
+		while(!st.empty() && st.top().second > temp.first){
+			pair<int,int> top  = st.top();
+			st.pop();
+			temp = make_pair(min(top.first, temp.first), max(top.second, temp.second));
 		}
+		st.push(temp);
 	}
-	cout<< ans << endl;
-		
+	cout<< st.size() << endl;
 }
  
 int main() {

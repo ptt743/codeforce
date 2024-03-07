@@ -15,17 +15,31 @@ using namespace std;
 /*
 */
 void solve(){
-	int n; cin>> n;
-	string s; cin >> s;
-	n<<=1;
-	int ans = 1;
-	for(int i =1;i< n;i++){
-		if(s[i]=='(' && s[i-1] =='('){
-			ans+=1;
+	int n;
+	cin>> n;
+	vector<long long> a(n);
+	for(int i =0;i< n;i++) cin>> a[i];
+	int mex = -1;
+	for(int i =0;i< n;i++){
+		if(i==0 && s[i]!=0){
+			mex = 0;
+			break;
+		} 
+		if(i>0 && s[i]!= s[i-1]+1){
+			mex = s[i-1] +1;
+			break;
 		}
 	}
-	cout<< ans << endl;
-		
+	if(mex==-1){
+		mex = s[n-1] +1;
+	}
+	cout<< mex << endl;
+	int y;
+	cin>> y;
+	while(y!=-1){
+		cout<< y << endl;
+		cin>> y;
+	}
 }
  
 int main() {

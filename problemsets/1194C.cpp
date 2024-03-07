@@ -15,17 +15,25 @@ using namespace std;
 /*
 */
 void solve(){
-	int n; cin>> n;
-	string s; cin >> s;
-	n<<=1;
-	int ans = 1;
-	for(int i =1;i< n;i++){
-		if(s[i]=='(' && s[i-1] =='('){
-			ans+=1;
+	string s,t,p;
+	cin>> s >> t >> p;
+	multiset<char> st;
+	vector<int> count(26,0);
+	for(int i =0;i< p.size();i++) count[p[i]-'a']++;
+	int index =0;
+	for(int i =0;i< t.size();i++){
+		if(index < s.size() && t[i] == s[index]) index++;
+		else {
+			if(count[t[i]-'a']>0){
+				count[t[i]-'a']--;
+			}else{
+				index =0;
+				break;
+			}
 		}
 	}
-	cout<< ans << endl;
-		
+	if(index == s.size() ) cout<< "YES"<<endl;
+	else cout<<"NO"<<endl;
 }
  
 int main() {
