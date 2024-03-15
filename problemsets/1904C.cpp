@@ -15,9 +15,9 @@ using namespace std;
 /*
 */
 void solve(){
-	int n; long long k;
+	int n; int k;
 	cin>> n >> k;
-	vector<long long> a(n);
+	vector<int> a(n);
 	for(int i =0;i< n;i++){
 		cin>> a[i];
 	}
@@ -26,7 +26,7 @@ void solve(){
 		return;
 	}
 	sort(a.begin(),a.end());
-	long long d = a[0];
+	int d = a[0];
 	for(int i =0;i < n-1;i++){
 		d = min(d, a[i+1] - a[i]); 
 	}
@@ -35,7 +35,7 @@ void solve(){
 		return;
 	}
 	for(int i =0;i< n;i++){
-		for(int j =0;j< i;j++){
+		for(int j =0;j< i; j++){
 			int v = a[i] - a[j];
 			int p = lower_bound(a.begin(), a.end(),v) - a.begin();
 			if(p<n) d = min(d, a[p] - v);
@@ -43,7 +43,6 @@ void solve(){
 		}
 	}
 	cout<< d << endl;
-
 }
  
 int main() {
