@@ -15,13 +15,21 @@ using namespace std;
 /*
 */
 void solve(){
-	int n; cin >> n;
-
-	long long ans = 0;
-	for(int id = 2; id < n; id++)
-		ans += 1ll * id * (id + 1);
-	
-	cout << ans << endl;
+	string s;
+	int m;
+	cin>> s;
+	cin>> m;
+	while(m--){
+		int l,r, k;  cin>> l >> r >> k;
+		l-- , r--;
+		k%= (r-l+1);
+		int index = r - k+1;
+		string second = s.substr(index,k);
+		string first = s.substr(l, index - l);
+		string temp = second + first;
+		s = s.substr(0, l) + temp + s.substr(r+1);
+	}
+	cout<< s<<endl;
 }
  
 int main() {

@@ -15,13 +15,21 @@ using namespace std;
 /*
 */
 void solve(){
-	int n; cin >> n;
-
-	long long ans = 0;
-	for(int id = 2; id < n; id++)
-		ans += 1ll * id * (id + 1);
-	
-	cout << ans << endl;
+	int n;
+	cin>> n;
+	vector<long long> a(n);
+	for(int i =0;i< n;i++) cin>> a[i];
+	int ans= 0;
+	for(int i =0;i< n;i++){
+		int j =i;
+		while(j<n-1 && a[j]*2>=a[j+1]){
+			j++;
+		}
+		
+		ans = max(ans, j-i+1);
+		i=j;
+	}
+	cout<< ans<<endl;
 }
  
 int main() {

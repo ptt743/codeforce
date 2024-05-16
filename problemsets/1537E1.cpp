@@ -14,18 +14,30 @@ using namespace std;
 //*****taipt*****//
 /*
 */
-void solve(){
-	int n; cin >> n;
+string get(string s, int k){
+	while(s.size()< k){
+		s += s;
+	}
+	while(s.size()>k) s.pop_back();
+	return s;
+}
 
-	long long ans = 0;
-	for(int id = 2; id < n; id++)
-		ans += 1ll * id * (id + 1);
-	
-	cout << ans << endl;
+void solve(){
+	int n,k; cin>> n >>k;
+	string s; cin>> s;
+	string pref = "";
+	pref+= s[0];
+	string mn = get(pref, k);
+	for(int i =1;i< s.size();i++){
+		pref+=s[i];
+		mn = min(mn, get(pref, k));
+	}
+	cout<< mn<<endl;
+
 }
  
 int main() {
     ios_base::sync_with_stdio(0); cin.tie(0);
-        solve();
+    solve();
     return 0;
 }

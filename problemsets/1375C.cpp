@@ -8,24 +8,27 @@
 #include<unordered_map>
 #include<cmath>
 #include<functional>
+#include<climits>
 #define ll long long
-
+ 
 using namespace std;
 //*****taipt*****//
 /*
 */
 void solve(){
-	int n; cin >> n;
-
-	long long ans = 0;
-	for(int id = 2; id < n; id++)
-		ans += 1ll * id * (id + 1);
-	
-	cout << ans << endl;
+	int n ; cin>> n;
+	vector<int> a(n+1,0);
+	for(int i =1;i<=n;i++) cin>> a[i];
+	if(a[1]< a[n]) cout<<"YES"<<endl;
+	else cout<<"NO"<<endl;
 }
  
 int main() {
     ios_base::sync_with_stdio(0); cin.tie(0);
+    int t;
+    cin >> t;
+    while(t--){
         solve();
+    }
     return 0;
 }

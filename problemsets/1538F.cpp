@@ -15,17 +15,22 @@ using namespace std;
 /*
 */
 void solve(){
-	int n; cin >> n;
-
+	long long l,r; cin>> l >> r;
 	long long ans = 0;
-	for(int id = 2; id < n; id++)
-		ans += 1ll * id * (id + 1);
-	
-	cout << ans << endl;
+	while(l!=0 || r!=0){
+		ans += r - l;
+		l/=10;
+		r/=10;
+	}
+	cout<< ans <<endl;
 }
  
 int main() {
     ios_base::sync_with_stdio(0); cin.tie(0);
+    int t;
+    cin >> t;
+    while(t--){
         solve();
+    }
     return 0;
 }

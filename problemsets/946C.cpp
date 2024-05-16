@@ -15,13 +15,21 @@ using namespace std;
 /*
 */
 void solve(){
-	int n; cin >> n;
-
-	long long ans = 0;
-	for(int id = 2; id < n; id++)
-		ans += 1ll * id * (id + 1);
-	
-	cout << ans << endl;
+	string s;
+	cin>> s;
+	string t = "abcdefghijklmnopqrstuvwxyz";
+	int left = 0;
+	string result = "";
+	for(int i =0;i< s.size();i++){
+		int a = s[i] - 'a';
+		int b = t[left] - 'a';
+		if(left<26 && a<= b){
+			result+=t[left];
+			left++;
+		} else result+=s[i];
+	}
+	if(left<26) cout<<"-1"<<endl;
+	else cout<< result<<endl;
 }
  
 int main() {
